@@ -1,6 +1,6 @@
 {
     "name": "goflow_connector",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "",
     "main": "build/index.js",
     "scripts": {
@@ -12,5 +12,9 @@
     "license": "ISC",
     "devDependencies": {
         "husky": "^7.0.4"
+    },
+    "dependencies": {
+        "axios": "^0.25.0",
+        "memoizee": "^0.4.15"
     }
 }
