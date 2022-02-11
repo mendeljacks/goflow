@@ -1,12 +1,12 @@
 {
-    "name": "goflow",
-    "version": "1.0.1",
+    "name": "goflow_connector",
+    "version": "1.0.4",
     "description": "",
     "main": "build/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "prepare": "husky install",
-        "bump": "node -e \"const fs = require('fs'); const json = JSON.parse(fs.readFileSync('package.json', 'utf-8')); const new_json = {...json, version: json.version.split('.').map((el, i) => i==2 ? Number(el)+1 : el).join('.') } ;   fs.writeFileSync('package.json',  JSON.stringify(new_json, null, 4))\""
+        "bump": "tsc && npm version patch --no-git-tag-version && git add package*.json && npm publish"
     },
     "author": "",
     "license": "ISC",
