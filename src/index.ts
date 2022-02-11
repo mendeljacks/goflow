@@ -20,7 +20,7 @@ export const order_get_order_id = (
     }
 }
 
-type GetItemListResult = {
+export type GetItemListResult = {
     itemId: number
     itemNumber: string
     isActive: boolean
@@ -63,6 +63,7 @@ export const get_item_list = async (
             'Warehouses.Warehouse': string[]
             'tags.Id': string[]
         }
+        itemNumber?: string
         $top: number
         $skip: number
     },
