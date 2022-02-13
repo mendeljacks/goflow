@@ -28,7 +28,3 @@ export const auth_to_cookie = memoizee(
 export const auth_to_base_url = (auth: Auth): string => {
     return `https://${auth.subdomain}.goflow.com`
 }
-
-export const login = async (auth: Auth) => {
-    return auth_to_cookie(auth)
-}
