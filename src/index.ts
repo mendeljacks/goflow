@@ -76,3 +76,81 @@ export const get_item_list = async (
         headers: { cookie }
     })
 }
+
+type WarehouseInventoryInfo = {
+    warehouseId: string
+    warehouseName: string
+    quantityOnHand: number
+    quantityInTransit: number
+    quantityOnSO: number
+    quantityOnPO: number
+    available: number
+    unfulfillableQuantity: number
+    bin?: any
+    aisle?: any
+}
+
+type VendorInventory = {
+    vendor: string
+    vendorId: number
+    itemNumber: string
+    quantity: number
+    cost: number
+    lastUpdated: Date
+    expirationDate?: any
+}
+
+type GetInventoryByWarehouseResponse = {
+    itemMasterId?: any
+    itemNumber?: any
+    itemId: number
+    available: number
+    onHand: number
+    inTransit: number
+    onPo: number
+    onSo: number
+    vendor: number
+    warehouseInventoryInfo: WarehouseInventoryInfo[]
+    vendorInventory: VendorInventory[]
+}
+
+export const get_inventory_by_warehouse = async (
+    base_url: string,
+    cookie: string,
+    params: {
+        itemNumber: string
+        warehouseId: string
+    },
+    axios
+): Promise<{ data: GetInventoryByWarehouseResponse }> => {
+    return axios({
+        method: 'GET',
+        url: `${base_url}/api/item/getInventoryByWarehouses`,
+        params: params,
+        headers: { cookie }
+    })
+}
+
+export const post_inventory_adjustment = (
+    base_url: string,
+    cookie: string,
+    data: {
+        referenceNumber: string
+        warehouse: string
+        warehouseId: string
+        notes: string[]
+        items: {
+            itemNumber: string
+            cost?: number
+            quantity: string
+        }[]
+    },
+    axios
+): Promise<{ data: string }> => {
+    return axios({
+        method: 'POST',
+        url: `${base_url}/api/inventoryAdjustment/adjust`,
+        data: data,
+        headers: { cookie }
+    })
+}
