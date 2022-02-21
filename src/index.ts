@@ -2,6 +2,7 @@ import {
     GetAllStoresResult,
     GetInventoryByWarehouseResponse,
     GetItemListResponse,
+    GetOrderResponse,
     GetWarehouseListResult,
     OrderListResponse
 } from './types'
@@ -13,6 +14,19 @@ export const get_orders = (base_url: string, cookie: string, body: any) => {
         data: body,
         headers: { cookie }
     }
+}
+export const get_order = async (
+    base_url: string,
+    cookie: string,
+    params: { orderId: number },
+    axios
+): Promise<{ data: GetOrderResponse }> => {
+    return axios({
+        method: 'GET',
+        url: `${base_url}/api/order/get`,
+        params,
+        headers: { cookie }
+    })
 }
 
 export const order_get_order_id = (
