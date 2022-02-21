@@ -1,11 +1,8 @@
-import {
-    GetAllStoresResult,
-    GetInventoryByWarehouseResponse,
-    GetItemListResponse,
-    GetOrderResponse,
-    GetWarehouseListResult,
-    OrderListResponse
-} from './types'
+import { GetAllStoresResult, GetWarehouseListResult } from './types/get_all_stores_response'
+import { GetInventoryByWarehouseResponse } from './types/get_inventory_by_warehouse_response'
+import { GetItemListResponse } from './types/get_item_list_response'
+import { OrderListResponse } from './types/get_order_list_response'
+import { GetOrderResponse } from './types/get_order_response'
 
 export const get_orders = (base_url: string, cookie: string, body: any) => {
     return {
