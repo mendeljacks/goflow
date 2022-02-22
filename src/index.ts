@@ -180,7 +180,7 @@ export const get_report = async (
     base_url: string,
     cookie: string,
     params: {
-        path: string
+        reportFileName: string
     },
     axios
 ): Promise<{ data: any }> => {
@@ -191,7 +191,7 @@ export const get_report = async (
         zpl: 'getZplAsPdf'
     }
 
-    const extension = params.path ? params.path.split('.').pop() : null
+    const extension = params.reportFileName ? params.reportFileName.split('.').pop() : null
 
     return axios({
         method: 'GET',
