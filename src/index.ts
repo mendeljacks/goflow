@@ -175,3 +175,28 @@ export const get_all_stores = async (
         headers: { cookie }
     })
 }
+
+export const get_report = async (
+    base_url: string,
+    cookie: string,
+    params: {
+        path: string
+    },
+    axios
+): Promise<{ data: any }> => {
+    const endpoints = {
+        pdf: 'getPdf',
+        report: 'getReportAsPdf',
+        json: 'getImageLabelToPdf',
+        zpl: 'getZplAsPdf'
+    }
+
+    const extension = params.path ? params.path.split('.').pop() : null
+
+    return axios({
+        method: 'GET',
+        url: `${base_url}/api/report/${endpoints[extension]}`,
+        params: params,
+        headers: { cookie }
+    })
+}
