@@ -192,8 +192,9 @@ export const get_report = async (
     }
 
     const extension = params.reportFileName ? params.reportFileName.split('.').pop() : null
-
     return axios({
+        responseType: 'arraybuffer',
+        // responseEncoding: 'binary',
         method: 'GET',
         url: `${base_url}/api/report/${endpoints[extension]}`,
         params: params,
